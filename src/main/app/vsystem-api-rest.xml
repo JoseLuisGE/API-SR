@@ -13,22 +13,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <http:request-config name="HTTP_Request_Configuration" host="${rest.host}" port="${rest.port}" doc:name="HTTP Request Configuration"/>
     <flow name="getRestFlight">
         <http:request config-ref="HTTP_Request_Configuration" path="${rest.basePath}" method="GET" doc:name="HTTP" metadata:id="66b76d29-29a4-46e2-95ca-82db7c1ccf43"/>
-        <dw:transform-message doc:name="Transform Message" metadata:id="e568d9e3-9aca-43e4-abf2-b12eb4055091">
-            <dw:input-payload doc:sample="sample_data\json.json" mimeType="application/json"/>
-            <dw:set-payload><![CDATA[%dw 1.0
-%output application/json
----
-payload.flights map {
-	airline: $.airlineName,
-	code: $.code,
-	date: $.departureDate,
-	dest: $.destination,
-	seats: $.emptySeats,
-	origin: $.origin,
-	plane: $.planeType,
-	price: $.price
-}]]></dw:set-payload>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload resource="classpath:dw.dwl"/>
         </dw:transform-message>
+
         <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </flow>
 </mule>
