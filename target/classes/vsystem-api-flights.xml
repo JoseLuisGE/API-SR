@@ -14,9 +14,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
 http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
     <apikit:config name="apiConfig" raml="api.raml" consoleEnabled="false" doc:name="Router" keepRamlBaseUri="false">
-        <apikit:flow-mapping resource="/getFlight" action="get" flow-ref="getFlightsFlow"/>
-        <apikit:flow-mapping resource="/getAllFlights" action="get" flow-ref="getAllFlightsFlow"/>
-        <apikit:flow-mapping resource="/getRestFlight" action="get" flow-ref="getRestFlight"/>
+        <apikit:flow-mapping resource="/flights/delta-code" action="get" flow-ref="delta-code"/>
+        <apikit:flow-mapping resource="/flights/delta" action="get" flow-ref="delta"/>
+        <apikit:flow-mapping resource="/flights/united" action="get" flow-ref="united"/>
     </apikit:config>
 
     <context:property-placeholder location="api.properties" />
@@ -55,7 +55,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
             <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
         </apikit:mapping>
     </apikit:mapping-exception-strategy>
-    <flow name="getFlightsFlow">
+    <flow name="delta-code">
         <set-variable variableName="destination" value="#[message.inboundProperties.'http.query.params'.destination]" doc:name="Variable"/>
         <dw:transform-message doc:name="Transform Message">
             <dw:input-variable doc:sample="sample_data\map_string_string_1.dwl" variableName="destination"/>

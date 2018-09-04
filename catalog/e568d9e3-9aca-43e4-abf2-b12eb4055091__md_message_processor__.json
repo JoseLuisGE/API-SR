@@ -5,7 +5,11 @@
             "typeId": "flights"
         }
     },
-    "outputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "sessionVariables": {
+            "dw.dwl": {}
+        }
+    },
     "id": "e568d9e3-9aca-43e4-abf2-b12eb4055091",
     "version": "5.2.0.0"
 }

@@ -17,7 +17,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 
     <context:property-placeholder location="api.properties" />
     <ws:consumer-config name="Web_Service_Consumers" wsdlLocation="http://mu.mulesoft-training.com/essentials/delta?wsdl" service="TicketServiceService" port="TicketServicePort" serviceAddress="http://mule-worker-training-u.cloudhub.io:8081/essentials/delta" doc:name="Web Service Consumer"/>
-    <flow name="getAllFlightsFlow">
+    <flow name="delta">
         <ws:consumer config-ref="Web_Service_Consumers" operation="listAllFlights" doc:name="Web Service Consumer"/>
         <dw:transform-message doc:name="Transform Message">
             <dw:input-payload doc:sample="sample_data\listAllFlightsResponse.xml"/>
