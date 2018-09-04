@@ -1,110 +1,110 @@
 #%RAML 0.8
 title: Sample API
-
-/getFlight:
-  get:
-    queryParameters:
-      destination:
-        type: string
-        required: true
-    responses:
-      200:
-        body:
-          application/json:
-            example:  |
-              { 
-                "success":true, 
-                "message": "Succesful" 
-               }
-              
-      400:
-        body:
-          application/json:
-            example:  |
-              { 
-                "success": false, 
-                "message": "Bad request - The server cannot process the request due to a client error" 
-              }
-      404:
-        body:
-          application/json:
-             example: |
-              {
-                "success": false,
-                "message": "Not found"
-              }
-      500:
-        body:
-          application/json:
-             example: |
-              {
-                "success": false,
-                "message": "Server error"
-              }
-              
-/getAllFlights:
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            example:  |
-              { 
-                "success":true, 
-                "message": "Succesful" 
-               }
-              
-      400:
-        body:
-          application/json:
-            example:  |
-              { 
-                "success": false, 
-                "message": "Bad request - The server cannot process the request due to a client error" 
-              }
-      404:
-        body:
-          application/json:
-             example: hola#!include 400_error.json
-             
-      500:
-        body:
-          application/json:
-             example: |
-              {
-                "success": false,
-                "message": "Server error"
-              }
-              
-/getRestFlight:
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            example:  |
-              { 
-                "success":true, 
-                "message": "Succesful" 
-               }
-      400:
-        body:
-          application/json:
-            example:  |
-              { 
-                "success": false, 
-                "message": "Bad request - The server cannot process the request due to a client error" 
-              }
-      404:
-        body:
-          application/json:
-             example: hola#!include 400_error.json
-             
-      500:
-        body:
-          application/json:
-             example: |
-              {
-                "success": false,
-                "message": "Server error"
-              }
+/flights:
+  /delta-code:
+    get:
+      queryParameters:
+        destination:
+          type: string
+          required: true
+      responses:
+        200:
+          body:
+            application/json:
+              example:  |
+                { 
+                  "success":true, 
+                  "message": "Succesful" 
+                 }
+                
+        400:
+          body:
+            application/json:
+              example:  |
+                { 
+                  "success": false, 
+                  "message": "Bad request - The server cannot process the request due to a client error" 
+                }
+        404:
+          body:
+            application/json:
+               example: |
+                {
+                  "success": false,
+                  "message": "Not found"
+                }
+        500:
+          body:
+            application/json:
+               example: |
+                {
+                  "success": false,
+                  "message": "Server error"
+                }
+                
+  /delta:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example:  |
+                { 
+                  "success":true, 
+                  "message": "Succesful" 
+                 }
+                
+        400:
+          body:
+            application/json:
+              example:  |
+                { 
+                  "success": false, 
+                  "message": "Bad request - The server cannot process the request due to a client error" 
+                }
+        404:
+          body:
+            application/json:
+               example: hola#!include 400_error.json
+               
+        500:
+          body:
+            application/json:
+               example: |
+                {
+                  "success": false,
+                  "message": "Server error"
+                }
+                
+  /united:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example:  |
+                { 
+                  "success":true, 
+                  "message": "Succesful" 
+                 }
+        400:
+          body:
+            application/json:
+              example:  |
+                { 
+                  "success": false, 
+                  "message": "Bad request - The server cannot process the request due to a client error" 
+                }
+        404:
+          body:
+            application/json:
+               example: hola#!include 400_error.json
+               
+        500:
+          body:
+            application/json:
+               example: |
+                {
+                  "success": false,
+                  "message": "Server error"
+                }

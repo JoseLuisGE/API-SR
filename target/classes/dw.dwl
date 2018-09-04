@@ -1,4 +1,4 @@
-%dw 1.0
+%dw 0.1
 %output application/json
 ---
 payload.flights map {
